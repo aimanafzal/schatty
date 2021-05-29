@@ -1,5 +1,8 @@
 module.exports={
-    messages:{},
+    messages:{
+        status:"",
+        description:"",
+    },
     errors:{},
-    status:{}
+    
 }
