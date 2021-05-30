@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 var userSchema = new mongoose.Schema({
+    username: {type: String, default:""},
     email:{type: String, default:""}, 
     password:{type: String, default:""},
     phoneNumber:{type: String, default:""},
@@ -9,8 +10,8 @@ var userSchema = new mongoose.Schema({
     signedupDate:{type: Date, default:Date.now()},
     lastLogin:{type: Date, default:Date.now()},
     active:{type: Boolean, default:false},
-    transactionAmount:{type: BigInt, default:0},
-    packageType:{type:BigInt, default:0},
+    transactionAmount:{type: Number, default:0},
+    packageType:{type:Number, default:0},
     lastTransaction:{type: String, default:""}
 });
 
