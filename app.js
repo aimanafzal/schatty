@@ -16,15 +16,15 @@ const signupRoute = require("./Routes/signup");
 app.use("/api",signupRoute);
 // app.use("/api",loginRoutes);
 
-// mongoose.connect(
-//     "mongodb+srv://aiman:3PcSOYdfb0S2BzKX@cluster0.pqnaa.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
-//     ,{useNewUrlParser: true, useUnifiedTopology: true},function(err,info){
-//     if(err){
-//         console.log("cant connect",err)
-//     } else if(!err) {
-//         console.log("Connected")
-//     }
-// });
+mongoose.connect(
+    "mongodb+srv://admin:admin@cluster0.uyrpl.mongodb.net/test?retryWrites=true&w=majority"
+    ,{useNewUrlParser: true, useUnifiedTopology: true},function(err,info){
+    if(err){
+        console.log("cant connect",err)
+    } else if(!err) {
+        console.log("Connected")
+    }
+});
 
 app.listen(process.env.PORT || 5000, function(){
 	console.log(`App Running on ${process.env.PORT}`)
