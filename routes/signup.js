@@ -13,9 +13,13 @@ router.post("/signup", async (req,res) => {
     });
     var isCreated = await user.save();
     if (isCreated)
-        console.log(username, email, password, phoneNumber);
+        res.send(200).send({
+            message:`User created with username ${username}`
+        })    
     if (!isCreated)
-        console.log(`User could not be created!`);
+        res.send(400).send({
+            message:`User could not be created!`
+        })    
     // user.save((err, user) => {
         
     //     if (err) {
