@@ -11,11 +11,8 @@ app.use(express.json())
 app.use(cors())
 
 const signupRoute = require("./Routes/signup");
-// const loginRoutes = require("./Routes/login");
 
 app.use("/api",signupRoute);
-// app.use("/api",loginRoutes);
-
 mongoose.connect(
     "mongodb+srv://admin:admin@cluster0.uyrpl.mongodb.net/test?retryWrites=true&w=majority"
     ,{useNewUrlParser: true, useUnifiedTopology: true},function(err,info){
