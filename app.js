@@ -9,10 +9,11 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.json())
 app.use(cors())
+const routes = require("./routes/routes");
+// const signupRoute = require("./routes/signup");
+// const login       = require("./routes/login")
+app.use("/api",routes);
 
-const signupRoute = require("./Routes/signup");
-
-app.use("/api",signupRoute);
 mongoose.connect(
     "mongodb+srv://admin:admin@cluster0.uyrpl.mongodb.net/test?retryWrites=true&w=majority"
     ,{useNewUrlParser: true, useUnifiedTopology: true},function(err,info){
