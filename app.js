@@ -2,6 +2,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require('cors');
 const mongoose = require("mongoose")
+const routes = require("./routes/routes");
+const swaggerUi = require('swagger-ui-express'),
+swaggerDocument = require('../swagger.json');
 require('dotenv').config()
 app = express();
 
@@ -9,7 +12,12 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.json())
 app.use(cors())
-const routes = require("./routes/routes");
+app.use(
+    '/api-docs',
+    swaggerUi.serve, 
+    swaggerUi.setup(swaggerDocument)
+  );
+
 // const signupRoute = require("./routes/signup");
 // const login       = require("./routes/login")
 app.use("/api",routes);

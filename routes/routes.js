@@ -4,6 +4,9 @@ var signup = require('../controllers/signup');
 var users = require('../controllers/users');
 router = express.Router();
 
+/**
+ * Create a single user by passing the params in body using a POST call
+ */
 router.post('/signup', async (req,res) => {
     const {username, email, password, phoneNumber} = req.body
     let _signup = new signup();
@@ -15,7 +18,9 @@ router.post('/signup', async (req,res) => {
     }
 })
 
-
+/**
+ * Get user by username 
+ */
 router.get('/getUser/:username', async (req, res)=>{
     const username = req.params.username;
     let _users = new users();
