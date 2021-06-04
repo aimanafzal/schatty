@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 var userSchema = new mongoose.Schema({
+    name: {type: String, default:""},
     username: {type: String, default:""},
     email:{type: String, default:""}, 
     password:{type: String, default:""},
@@ -12,7 +13,12 @@ var userSchema = new mongoose.Schema({
     active:{type: Boolean, default:false},
     transactionAmount:{type: Number, default:0},
     packageType:{type:Number, default:0},
-    lastTransaction:{type: String, default:""}
+    lastTransaction:{type: String, default:""},
+    messages:[{
+        sentby:{type: String},
+        sentOn:{type: Date},
+        message:{type: String}
+    }]
 });
 
 module.exports = mongoose.model("User",userSchema);

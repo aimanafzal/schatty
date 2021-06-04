@@ -31,4 +31,19 @@ router.get('/getUser/:username', async (req, res)=>{
         });
     }
 })
+
+/**
+ * Updates the password for the user using
+ * the username sent in body 
+ */
+router.post('/updatePassword', async(req,res)=>{
+    const {username, password} = req.body;
+    let _users = new users();
+    let isAvailable = await _users.updatePassword(username);
+    if ( isAvailable ){
+        res.status(isAvailable.status).send({
+            data: isAvailable.data
+        });
+    }
+})
 module.exports = router;
