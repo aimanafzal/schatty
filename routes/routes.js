@@ -39,11 +39,24 @@ router.get('/getUser/:username', async (req, res)=>{
 router.post('/updatePassword', async(req,res)=>{
     const {username, password} = req.body;
     let _users = new users();
-    let isAvailable = await _users.updatePassword(username);
+    let isAvailable = await _users.updatePassword(username, password);
     if ( isAvailable ){
         res.status(isAvailable.status).send({
             data: isAvailable.data
         });
     }
 })
+
+router.post('/forgotPassword', async(req,res)=>{
+    const {username, password, otp} = req.body;
+    let _users = new users();
+    let isAvailable = await _users.updatePassword(username, password, otp);
+    if ( isAvailable ){
+        res.status(isAvailable.status).send({
+            data: isAvailable.data
+        });
+    }
+})
+
+
 module.exports = router;
