@@ -33,6 +33,30 @@ router.get('/getUser/:username', async (req, res)=>{
 })
 
 /**
+ * Logs in the User
+ */
+router.get('/user/login', async (req, res)=>{
+    const {username, password} = req.body.username;
+    let _users = new users();
+    let isAvailable = await _users.getUser(username);
+    let metaData = {}
+    if ( isAvailable && isAvailable.data.username === username ){
+        metaData.data = true;
+        metaData.status = 200;
+    }
+    else {
+        metaData.data = false;
+        metaData.status = 404;
+    }     
+    res.status(isAvailable.status).send({
+        data: isAvailable.data
+    });
+})
+
+
+
+
+/**
  * Updates the password for the user using
  * the username sent in body 
  */
