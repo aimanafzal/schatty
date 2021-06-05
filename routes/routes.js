@@ -2,6 +2,7 @@ const User = require("../models/users");
 const express = require("express");
 var signup = require('../controllers/signup');
 var users = require('../controllers/users');
+var mail = require('../controllers/mail');
 router = express.Router();
 
 /**
@@ -84,3 +85,8 @@ router.post('/forgotPassword', async(req,res)=>{
 
 
 module.exports = router;
+router.post('/sendmail', async(req,res)=>{
+    const {to} = req.body;
+    console.log(to)
+    mail(to);
+})
